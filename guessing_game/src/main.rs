@@ -3,15 +3,11 @@ use rand::Rng;
 use std::cmp::Ordering;
 
 fn main() {
-    
     let secret_number = rand::thread_rng().gen_range(1, 101); //[1,100]
-
-    println!("Guess the number!");
-    println!("");
-    println!("Please input your guess(hint {})", secret_number);
-
-    
     let quit = String::from("quit");
+
+    println!("=== Guess the number! ===");
+    println!("Please input your guess(hint {})", secret_number);
 
     loop {
         let mut guess = String::new();
@@ -31,8 +27,6 @@ fn main() {
         let guess_number: u32 =  guess.trim()
             .parse()
             .expect("number!!!");
-
-       
         
         match guess_number.cmp(&secret_number) {
             Ordering::Less => println!("Too small"),
