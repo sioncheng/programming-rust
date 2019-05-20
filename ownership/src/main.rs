@@ -23,9 +23,25 @@ fn main() {
     //println!("s2 = {}", s2); will not work, s2 has been moved
     println!("s3 = {}", s3);
 
+    println!("s3.lengh = {}", borrow(&s3));
+
+    println!("s3 = {}", s3); //s3 been borrowed, not moved
+    
+
+    let mut s4 = String::from("hohoho");
+    borrow_mut(&mut s4);
+    println!("s4 = {}", s4);
 }
 
 fn take_ownership(some_string: String) -> String{
     println!("some_string = {}", some_string);
     some_string
+}
+
+fn borrow(s: &String) -> usize {
+    s.len()
+}
+
+fn borrow_mut(s: &mut String) {
+    s.push_str(" ?????")
 }
